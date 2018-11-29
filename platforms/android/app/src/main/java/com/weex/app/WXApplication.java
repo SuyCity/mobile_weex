@@ -2,9 +2,9 @@ package com.weex.app;
 
 import android.app.Application;
 
+import com.alibaba.android.bindingx.plugin.weex.BindingX;
 import com.weex.app.extend.ImageAdapter;
 import com.weex.app.extend.WXEventModule;
-import com.alibaba.weex.plugin.loader.WeexPluginContainer;
 import com.weex.app.util.AppConfig;
 import com.taobao.weex.InitConfig;
 import com.taobao.weex.WXSDKEngine;
@@ -21,11 +21,11 @@ public class WXApplication extends Application {
         new InitConfig.Builder().setImgAdapter(new ImageAdapter()).build()
     );
     try {
+      BindingX.register();
       WXSDKEngine.registerModule("event", WXEventModule.class);
     } catch (WXException e) {
       e.printStackTrace();
     }
     AppConfig.init(this);
-    WeexPluginContainer.loadAll(this);
   }
 }

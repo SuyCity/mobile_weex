@@ -17,12 +17,9 @@ android {
         }
     }
     applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            def outputFile = output.outputFile
-            if (outputFile != null && outputFile.name.equals('app-debug.apk')) {
-                def fileName = outputFile.name.replace("app-debug.apk", "weex-app.apk")
-                output.outputFile = new File(outputFile.parent, fileName)
-            }
+        variant.outputs.all { output ->
+            outputFileName = "app-debug.apk"
+
         }
     }
     signingConfigs {
@@ -62,7 +59,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.taobao.android:weex_sdk:0.16.0'
+    api 'com.taobao.android:weex_sdk:0.19.0.5:debug@aar'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
     compile 'com.squareup.okhttp:okhttp:2.3.0'
     compile 'com.squareup.okhttp:okhttp-ws:2.3.0'
@@ -76,8 +73,10 @@ dependencies {
     compile 'com.taobao.android:weex_inspector:0.10.0.5'
     compile 'com.journeyapps:zxing-android-embedded:3.4.0'
     // PLUGIN GRADLE EXTENSIONS START
-    compile 'com.taobao.android:weexplugin-loader:1.3'
-    compile 'com.taobao.android:weexplugin-processor:1.3'
-    compile 'com.taobao.android:weexplugin-annotation:1.3'
+//    compile 'com.taobao.android:weexplugin-loader:1.3'
+//    compile 'com.taobao.android:weexplugin-processor:1.3'
+//    compile 'com.taobao.android:weexplugin-annotation:1.3'
     // PLUGIN GRADLE EXTENSIONS END
+    compile 'com.alibaba.android:bindingx-core:1.1.1'
+    compile 'com.alibaba.android:bindingx_weex_plugin:1.0.3'
 }

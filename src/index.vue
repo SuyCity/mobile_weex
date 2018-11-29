@@ -14,6 +14,9 @@
 </template>
 
 <script>
+const navigator = weex.requireModule('navigator')
+const root = weex.config.bundleUrl;
+
 export default {
   name: 'App',
   data() {
@@ -23,7 +26,7 @@ export default {
     },
     {
       title: "Page2",
-      url: ""
+      url: "bindingxHW.js"
     }]
     return {
       logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
